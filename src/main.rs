@@ -7,16 +7,18 @@ fn main() {
     let key: &str = "foo";
     let value: &str = "bar";
 
+    println!("Writing key: {} and value: {} to rocksdb", key, value);
     assert!(db.put(key, value).is_ok());
 
     match db.get(key) {
         Ok(Some(value)) => match value.to_utf8() {
-            Some(v) => println!("retrieved utf8 value: {}", v),
+            Some(v) => println!("Reading key: {} and value: {} from rocksdb", key, v),
             None => println!("did not read valid utf-8 out of the db"),
         },
         Ok(None) => panic!("value not present!"),
         Err(e) => println!("error retrieving value: {}", e),
     }
 
+    println!("Deleting key: {} and value: {} from rocksdb", key, value);
     assert!(db.delete(key).is_ok());
 }
