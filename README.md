@@ -51,8 +51,6 @@ Deleting key: foo and value: bar from rocksdb
 
 This is using the [rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb) crate.
 
-
-
 ## version
 
 ```

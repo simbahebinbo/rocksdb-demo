@@ -6,7 +6,7 @@ fn main() {
     let value: &str = "bar";
 
     println!("Writing key: {} and value: {} to rocksdb", key, value);
-    db.put(key, value);
+    _ = db.put(key, value);
 
     match db.get(key) {
         Ok(Some(value)) => match String::from_utf8(value).ok() {
@@ -18,5 +18,5 @@ fn main() {
     }
 
     println!("Deleting key: {} and value: {} from rocksdb", key, value);
-    db.delete(key);
+    _ = db.delete(key);
 }
